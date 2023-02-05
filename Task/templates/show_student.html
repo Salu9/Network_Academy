@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Network Academy/Show student profile</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/SRS.png' %}">
+    
+    <link rel="stylesheet"
+    href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  
+    
+    .form_style{
+          
+          
+          margin-left: 100px;
+          margin-right: 200px;
+          margin-top: 50px;
+         
+          box-shadow: 10px 10px 5px 12px #125688;
+          border-radius: 30px;
+          text-align: center;
+          
+        
+    }
+    label{
+        font-size: large;
+        color: black;
+    }
+    
+    input[type=text],input[type=password],input[type=email],input[type=number],input[type=date],select{
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 38B6FF;
+  border: none;
+}
+input[type=submit]
+  {
+ background-color:#3862A9;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 5px 5px 2px 2px #00053D;
+  
+  align-items: center;
+  align-self: center;
+  margin-right: 50%;
+  padding-top: 20px;
+}
+  a{
+    
+    text-decoration: none;
+    padding: 10px;
+   
+  } 
+    
+  </style>
+</head>
+<body>
+    
+  <div style="float: right;">
+    <a href="{% url 'edit' p.id  %}">EDIT</a>
+    <a href="{% url 'logout' %}">LOGOUT</a>
+</div>
+ 
+  <div class="form_style" style="padding-top: 50px;">
+    <img src="http://www.networkacademy.org/img/logo.png" style="padding: 20px;">
+    <pre style="float: right;padding: 20px;">
+      1st Floor,Melka Tower,Cherumparambath Road,
+      Kadavanthra P.O,Kochi-682 020
+      <b>0484 350 2375</b>
+      info@networkacademy.org|www.networkacademy.org
+    </pre>
+
+    
+    <form action="#" method="post" enctype="multipart/form-data" style="padding: 20px;">
+      {% csrf_token %}
+       
+        {% if p.student_Photo %}
+
+                    <img src="{{ p.student_Photo.url}}" width="100" height="100" style="border-radius: 10px;margin-left: 40%;"><br>
+                    
+                {% else %}
+                    <img src="https://www.genocideresearchhub.org.rw/wp-content/uploads/2021/12/1024px-User-avatar.svg_.png" width="100" style="margin-left: 40%;" >
+                {% endif %}
+       
+      
+       
+        
+      
+        
+
+      
+        <h2><label for="name">{{p.name}}</label></h2>
+        <b>Reg.No:&nbsp;&nbsp;&nbsp;</b>
+        <b><label>{{p.reg_no}}</label></b><br>
+        
+        
+        
+        <b><label for="name"> Contact Number:&nbsp;&nbsp;</label></b>
+      
+        <label>{{p.phone}}</label><br>
+    
+            <b><label > Permanent Address:&nbsp;&nbsp;</label></b>
+            <label > {{p.address}}</label><br>
+     
+            
+            <b><label > Persent Address:&nbsp;&nbsp;</label></b>
+     
+            <label > {{p.paddress}}</label><br>
+            <b><label > Email:&nbsp;&nbsp;</label></b>
+     
+            <label >{{p.email}}</label>
+          <b><label for="name">&nbsp; Date Of Birth:&nbsp;&nbsp;&nbsp;</label></b>
+        
+          <label > {{p.dob}}</label>
+    
+        <b><label> Blood Group:&nbsp;&nbsp;&nbsp;</label></b>
+      
+        <label > {{p.b_group}}</label><br>
+        <div>
+        <b><label> &nbsp;&nbsp;Emergency Contact No:&nbsp;&nbsp;&nbsp;</label></b>
+      
+        <label > {{p.e_number}}</label>
+        <b><label >Name:&nbsp;&nbsp;&nbsp;</label></b>
+        
+        <label > {{p.e_name}}</label><br>
+    </div>
+        <div>
+          <b><label >Guardian Name:&nbsp;&nbsp;&nbsp;</label></b>
+        
+          <label > {{p.g_name}}</label>
+          <b><label >Relation:&nbsp;&nbsp;&nbsp;</label></b>
+        
+          <label > {{p.realtion}}</label>
+          <b><label >Occupation:&nbsp;&nbsp;&nbsp;</label></b>
+        
+          <label > {{p.occupation}}</label>
+          <b><label >Contact No:&nbsp;&nbsp;&nbsp;</label></b>
+        
+          <label > {{p.g_number}}</label><br>
+        </div>
+          
+          <div>
+          <b><label >Course Entered:&nbsp;&nbsp;&nbsp;</label></b>
+          <label > {{p.course}}</label>
+        <b><label >Course Fee:&nbsp;&nbsp;&nbsp;</label></b>
+        <label > {{p.course_fee}}</label><br>
+        <b><label >Payment Mode:&nbsp;&nbsp;</label></b>
+        <label > {{p.p_mode}}</label>
+        <b><label>No:of EMI&nbsp;&nbsp;</label></b>
+        <label > {{p.n_emi}}</label>
+        </div>
+        
+        <br><br>
+        <div>
+        
+        </div><br>
+    
+
+    </form>
+  </div><br><br>
+ 
+</body>
+    </html>
